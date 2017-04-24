@@ -8,19 +8,43 @@ public class App {
     }
 
 
-    //define an interface type
+    //define an interface type.Actually this is a functional interface. A Functional interface will only have one method.
 
     interface Add {
         double add(double n1, double n2);
     }
 
+
+    interface Print {
+        void m();
+    }
+
+
     public static void main(String[] args) {
 
-        //Assign method/behaviour to a variable
+        //Assign method/behaviour to a variable.What compiler does is checking the lambda expression signature against the Add interface method signature.
         Add add = (double n1, double n2) -> {
             return n1 + n2;
         };
 
+        //passing the behaviour to a function.
+        add(add);
+
+        Print print = () -> {
+            System.out.println("Hi Java 8");
+        };
+
+        //executions.
         System.out.println(add.add(12.34, 56.23));
+        print.m();
+
     }
+
+    public static void add(Add add) {
+        System.out.println(add.add(12,45.89));
+    }
+
+
+
+
 }
